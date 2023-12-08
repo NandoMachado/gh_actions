@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check branch
-        if: github.ref_name != 'main'
+        if: github.ref_name != 'test'
         run: |
-          echo "ERROR: You can only merge to prod from main"
+          echo "ERROR: You can only merge to prod from main. You tried to merge from" 
+          echo ${{github.ref_name}}
           exit 1
