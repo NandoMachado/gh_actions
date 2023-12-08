@@ -1,4 +1,4 @@
-name: "deploy-will-fail"
+name: "deploy-will-pass-if-main"
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check branch
-        if: github.ref_name != 'test'
+        if: github.ref_name != 'main'
         run: |
-          echo "ERROR: You can only merge to prod from 'test'. You tried to merge from: ${{github.ref_name}}"
+          echo "ERROR: You can only merge to prod from 'main'. You tried to merge from: ${{github.ref_name}}"
           exit 1
