@@ -15,5 +15,5 @@ jobs:
       - name: Check branch
         if: github.ref_name != 'test'
         run: |
-          echo "ERROR: You can only merge to prod from main. You tried to merge from: ${{github.ref_name}}"
+          echo "ERROR: You can only merge to prod from 'test'. You tried to merge from: ${{github.ref_name}}"
           exit 1

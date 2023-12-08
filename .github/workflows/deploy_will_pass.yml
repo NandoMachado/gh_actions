@@ -1,0 +1,19 @@
+name: "deploy-test"
+
+on:
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: "SHA"
+        required: true
+        type: string
+
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch
+        if: github.ref_name != 'main'
+        run: |
+          echo "ERROR: You can only merge to prod from 'main'. You tried to merge from: ${{github.ref_name}}"
+          exit 1
