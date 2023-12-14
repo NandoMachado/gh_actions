@@ -17,3 +17,12 @@ jobs:
         run: |
           echo "ERROR: You can only merge to prod from 'main'. You tried to merge from: ${{github.ref_name}}"
           exit 1
+  echo_message:
+    needs:
+      check_branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print anything
+        run: |
+          echo "passed!"
+          exit 0
